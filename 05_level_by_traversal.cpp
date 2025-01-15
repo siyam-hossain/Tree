@@ -22,19 +22,16 @@ void level_order(node *root)
     while (!q.empty())
     {
         // 1. ber kore ana
-        node *find = q.front();
+        node *front = q.front();
         q.pop();
 
         // 2. oi node ke niye kaj
-        cout<<find->val<<" ";
+        cout<<front->val<<" ";
 
         // 3. push children 
-        if(find->left) q.push(find->left);
-        if(find->right) q.push(find->right);
-        
+        if(front->left) q.push(front->left);//jodi front->left != NULL taile push
+        if(front->right) q.push(front->right);//joid front->right != NULL taile push
     }
-    
-    
 }
 
 int main(int argc, char const *argv[])
