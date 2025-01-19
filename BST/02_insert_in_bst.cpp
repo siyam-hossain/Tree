@@ -49,32 +49,54 @@ node *input_tree()
     return root;
 };
 
-bool search(node *root, int val)
-{
-    if(root == NULL) return false;
-    if(root->val == val) return true;
 
-    //recursion
-    return (root->val > val) ? search(root->left, val) :search(root->right, val);
-    //or
-    // if(root->val > val) return search(root->left,val); //O(logh)
-    // if(root->val < val) return search(root->right,val);//O(logh)
+void level_order(node *root)
+{
+
+    queue<node *> q;
+    q.push(root);
+    while (!q.empty())
+    {
+        node *front = q.front();
+        q.pop();
+
+        cout<<front->val<<" ";
+
+        if(front->left) q.push(front->left);
+        if(front->right) q.push(front->right);
+    }
+}
+
+void insert(node *&root, int val)//it require reference 
+{
+    if(root == NULL)
+    {
+        //due to root update
+        root = new node(val);
+    }
+
+    if(root->val > val)
+    {
+        if(root->left == NULL) root->left = new node(val);
+        else insert(root->left,val); //calling recursion
+    }
+    else
+    {
+        if(root->right == NULL ) root->right = new node(val);
+        else insert(root->right,val); //calling recursion
+    }
 }
 
 
 int main(int argc, char const *argv[])
 {
-
-    /*
-        Inputs: 18 7 21 -1 12 20 26 9 15 -1 -1 -1 -1 -1 -1 -1 -1
-                150
-    */
+   
     node *root = input_tree();
-    
     int val;
     cin>>val;
     
-    cout<<((search(root,val)) ? "Found" : "Not found");
+    insert(root,val);
+    level_order(root);
 
     return 0;
 }
