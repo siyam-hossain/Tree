@@ -96,6 +96,7 @@ int main(int argc, char const *argv[])
     cin>>val;
     
     insert(root,val);
+    insert(root,11);
     level_order(root);
 
     return 0;
