@@ -15,5 +15,6 @@ int main(int argc, char const *argv[])
     pq.pop();
     pq.pop();
     cout<<pq.top()<<endl;//top refers as front
+    
     return 0;
 }

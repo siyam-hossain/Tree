@@ -27,7 +27,9 @@ int main(int argc, char const *argv[])
     }
     
 
-
+    /*
+        Input: I love football He loves football we love football they love cricket 
+    */
 
     return 0;
 }

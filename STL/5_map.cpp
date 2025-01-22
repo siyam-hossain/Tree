@@ -33,5 +33,9 @@ cout<<endl;
         cout<<"ache\n";
     }else cout<<"nai\n";
 
+    //insert function
+    mp.insert({"insert",2});
+    mp.insert(make_pair("rasel",5));
+    cout<<mp["rasel"]<<endl;
     return 0;
 }
